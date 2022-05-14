@@ -8,8 +8,8 @@ interface IAutoTest {
   updatedAt?: string;
 }
 
-interface TodoProps {
-  todo: IAutoTest
+interface AutoTestProps {
+  autoTest: IAutoTest
 }
 
 type ApiDataType = {
