@@ -9,7 +9,8 @@ interface IAutoTest {
 }
 
 interface AutoTestProps {
-  autoTest: IAutoTest
+  autoTest: IAutoTest,
+  runs: IRun[]
 }
 
 type ApiDataType = {

@@ -1,21 +1,27 @@
-import React from "react"
+import React, { useEffect, useState } from 'react'
+import RunItem from './run-item'
 
-// type Props = TodoProps & {
-//   updateTodo: (todo: ITodo) => void
-//   deleteTodo: (_id: string) => void
-// }
-
-const AutoTestItem: React.FC<AutoTestProps> = ({ autoTest }) => {
-  const checkTodo: string = 'line-through'
+const AutoTestItem: React.FC<AutoTestProps> = ({ autoTest, runs }) => {
   return (
     <div className="Card">
       <div className="Card--text">
-        <h1 className={checkTodo}>{autoTest.name}</h1>
+        <h1>{autoTest.name}</h1>
+        <p>{autoTest.description}</p>
         <br />
-        <span className={checkTodo}>{autoTest.description}</span>
+        <table>
+          <tbody>
+            {runs.map((run: IRun) => (
+            <RunItem
+              key={run._id}
+              run={run}
+            />
+            ))}
+          </tbody>  
+        </table>
       </div>
     </div>
   )
 }
 
 export default AutoTestItem
+

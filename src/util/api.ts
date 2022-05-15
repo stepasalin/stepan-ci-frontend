@@ -3,9 +3,17 @@ import { SERVER_HOST, SERVER_PORT } from '../config'
 
 const baseUrl: string = `http://${SERVER_HOST}:${SERVER_PORT}`
 
-export async function getAutoTests(): Promise<AxiosResponse> {
+async function getFromServer(endpoint: string): Promise<AxiosResponse> {
   const response: AxiosResponse = await axios.get(
-      baseUrl + '/all-auto-tests'
-    )
+    baseUrl + endpoint
+  )
   return response
+}
+
+export async function getAutoTests(): Promise<AxiosResponse> {
+  return(await getFromServer('/all-auto-tests'))
+}
+
+export async function getRuns(): Promise<AxiosResponse> {
+  return(await getFromServer('/all-runs'))
 }
