@@ -6,6 +6,11 @@ import { getAutoTests, getRuns } from './util/api'
 const App: React.FC = () => {
   const [autoTests, setAutoTests] = useState<IAutoTest[]>([])
   const [runs, setRuns] = useState<IRun[]>([])
+  const initDateTime = new Date()
+  const [date, setDate] = useState(initDateTime)
+  const tick = () => {
+    setDate(new Date())
+  }
 
   async function fetchAutoTests(): Promise<void> {
     const autoTests: IAutoTest[] = (await getAutoTests()).data.tests
@@ -21,7 +26,11 @@ const App: React.FC = () => {
   useEffect(() => {
     fetchAutoTests()
     fetchRuns()
-  }, [])
+    const timerID = setTimeout(() => tick(), 5000)
+    return () => {
+      clearTimeout(timerID)
+    }
+  }, [date])
 
 
   return (
