@@ -15,6 +15,6 @@ interface AutoTestProps {
 type ApiDataType = {
   message: string
   status: string
-  autotests: IAutoTest[]
-  autotest?: IAutoTest
+  tests: IAutoTest[]
+  test?: IAutoTest
 }

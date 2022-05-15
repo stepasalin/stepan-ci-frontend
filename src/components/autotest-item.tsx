@@ -5,7 +5,7 @@ import React from "react"
 //   deleteTodo: (_id: string) => void
 // }
 
-const autoTest: React.FC<AutoTestProps> = ({ autoTest }) => {
+const AutoTestItem: React.FC<AutoTestProps> = ({ autoTest }) => {
   const checkTodo: string = 'line-through'
   return (
     <div className="Card">
@@ -18,4 +18,4 @@ const autoTest: React.FC<AutoTestProps> = ({ autoTest }) => {
   )
 }
 
-export default autoTest
+export default AutoTestItem
