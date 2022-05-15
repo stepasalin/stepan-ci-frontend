@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import AutoTestItem from './components/autotest-item'
-import { runsForAutoTest } from './logic/runs-for-tests' 
-import { getAutoTests, getRuns } from './util/api'
+import { ITableau } from './types/tableau'
+import { getAutoTests, getTableau } from './util/api'
+
+const initialTableau = {
+  tableauItems: [{autoTestId: 'i dont exist', runs: []}]
+}
 
 const App: React.FC = () => {
   const [autoTests, setAutoTests] = useState<IAutoTest[]>([])
-  const [runs, setRuns] = useState<IRun[]>([])
+  const [tableau, setTableau] = useState<ITableau>(initialTableau)
   const initDateTime = new Date()
   const [date, setDate] = useState(initDateTime)
   const tick = () => {
@@ -17,15 +21,15 @@ const App: React.FC = () => {
     setAutoTests(autoTests)
   }
 
-  async function fetchRuns(): Promise<void> {
-    const runs: IRun[] = (await getRuns()).data.runs
-    setRuns(runs)
+
+  async function fetchTableau(): Promise<void> {
+    const tableau: ITableau = (await getTableau()).data
+    setTableau(tableau)
   }
 
-
   useEffect(() => {
+    fetchTableau()
     fetchAutoTests()
-    fetchRuns()
     const timerID = setTimeout(() => tick(), 5000)
     return () => {
       clearTimeout(timerID)
@@ -40,7 +44,7 @@ const App: React.FC = () => {
         <AutoTestItem
           key={autoTest._id}
           autoTest={autoTest}
-          runs={runsForAutoTest(runs,autoTest)}
+          tableau={tableau}
         />
       ))}
     </main>

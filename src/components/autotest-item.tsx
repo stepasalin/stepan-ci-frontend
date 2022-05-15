@@ -1,7 +1,9 @@
+import { table } from 'console'
 import React, { useEffect, useState } from 'react'
+import { thisAutoTestRuns } from '../logic/runs-for-tests'
 import RunItem from './run-item'
 
-const AutoTestItem: React.FC<AutoTestProps> = ({ autoTest, runs }) => {
+const AutoTestItem: React.FC<AutoTestProps> = ({ autoTest, tableau }) => {
   return (
     <div className="Card">
       <div className="Card--text">
@@ -18,7 +20,7 @@ const AutoTestItem: React.FC<AutoTestProps> = ({ autoTest, runs }) => {
             </tr>
           </thead>
           <tbody>
-            {runs.map((run: IRun) => (
+            {thisAutoTestRuns(tableau, autoTest).map((run: IRun) => (
             <RunItem
               key={run._id}
               run={run}

@@ -14,6 +14,6 @@ export async function getAutoTests(): Promise<AxiosResponse> {
   return(await getFromServer('/all-auto-tests'))
 }
 
-export async function getRuns(): Promise<AxiosResponse> {
-  return(await getFromServer('/all-runs'))
+export async function getTableau(): Promise<AxiosResponse> {
+  return(await getFromServer('/tableau'))
 }

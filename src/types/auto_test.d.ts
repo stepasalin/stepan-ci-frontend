@@ -10,7 +10,7 @@ interface IAutoTest {
 
 interface AutoTestProps {
   autoTest: IAutoTest,
-  runs: IRun[]
+  tableau: ITableau
 }
 
 type ApiDataType = {
