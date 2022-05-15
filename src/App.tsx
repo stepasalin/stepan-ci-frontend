@@ -6,20 +6,12 @@ const App: React.FC = () => {
   const [autoTests, setAutoTests] = useState<IAutoTest[]>([])
 
   async function fetchAutoTests(): Promise<void> {
-    const apiResponse = await getAutoTests()
-    console.log(apiResponse)
-    const autoTests: IAutoTest[] = apiResponse.data.tests
+    const autoTests: IAutoTest[] = (await getAutoTests()).data.tests
     setAutoTests(autoTests)
   }
-  // const fetchAutoTests = (): void => {
-  //   response =
-  //   // getAutoTests()
-  //   // .then(({ data: { tests } }: IAutoTest[] | any) => setAutoTests(autoTests))
-  //   // .catch((err: Error) => console.log(err))
-  // }
+
 
   useEffect(() => {
-    console.log('123')
     fetchAutoTests()
   }, [])
 

@@ -9,15 +9,3 @@ export async function getAutoTests(): Promise<AxiosResponse> {
     )
   return response
 }
-
-// export const getAutoTests = async (): Promise<Object> => {
-//   try {
-//     const response: AxiosResponse = await axios.get(
-//       baseUrl + '/all-auto-tests'
-//     )
-//     console.log(response)
-//     return response.data
-//   } catch (error) {
-//     throw new Error(error)
-//   }
-// }

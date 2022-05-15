@@ -11,8 +11,8 @@ const AutoTestItem: React.FC<AutoTestProps> = ({ autoTest }) => {
     <div className="Card">
       <div className="Card--text">
         <h1 className={checkTodo}>{autoTest.name}</h1>
+        <br />
         <span className={checkTodo}>{autoTest.description}</span>
-        <span className={checkTodo}>{autoTest.runCmd}</span>
       </div>
     </div>
   )
