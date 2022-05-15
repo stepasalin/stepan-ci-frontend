@@ -9,6 +9,14 @@ const AutoTestItem: React.FC<AutoTestProps> = ({ autoTest, runs }) => {
         <p>{autoTest.description}</p>
         <br />
         <table>
+          <thead>
+            <tr>
+              <td>CREATED AT</td>
+              <td>STATUS</td>
+              <td>TAKEN AT</td>
+              <td>AVAILABILITY</td>
+            </tr>
+          </thead>
           <tbody>
             {runs.map((run: IRun) => (
             <RunItem
